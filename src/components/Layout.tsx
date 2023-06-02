@@ -1,6 +1,6 @@
 import { useMemo } from "react";
 import { Routes, useRouter } from "../stores";
-import { About, Home, NotFound, Posts } from "../pages";
+import { About, Home, NotFound, Post, Posts } from "../pages";
 
 export const Layout = () => {
   const page = useRouter();
@@ -14,6 +14,8 @@ export const Layout = () => {
       return <About />;
     } else if (page.route === Routes.POSTS) {
       return <Posts />;
+    } else if (page.route === Routes.POST) {
+      return <Post postId={parseInt(page.params.postId)} />;
     } else {
       throw new Error("Invalid page route");
     }
